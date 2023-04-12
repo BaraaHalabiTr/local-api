@@ -6,7 +6,8 @@ const app = express();
 
 app.get('/users', (req, res) => {
     let users = [];
-    for(let i = 0; i < 10; i ++)
+    const count = req.query.count;
+    for(let i = 0; i < (count == undefined ? 10 : count); i ++)
         users.push({
             email: faker.internet.email(),
             password: faker.internet.password(),
